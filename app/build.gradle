@@ -18,6 +18,9 @@ repositories {
     mavenCentral()
 
     jcenter()
+    maven {
+        url "https://mariadb.com/docs/repository/"
+    }
 }
 
 dependencies {
@@ -30,7 +33,9 @@ dependencies {
     implementation 'com.google.guava:guava:31.1-jre'
 
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
-    implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.13'
+    // implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.13'
+implementation 'mysql:mysql-connector-java:8.0.27'
+implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.3'
 }
 
 application {
