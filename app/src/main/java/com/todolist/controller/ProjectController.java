@@ -5,7 +5,6 @@ import com.todolist.model.Project;
 import com.todolist.util.ConnectionFactory;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -27,8 +26,8 @@ public class ProjectController {
             statement = conn.prepareStatement(sql);
             statement.setString(1, project.getName());
             statement.setString(2, project.getDescription());
-            statement.setDate(3, new Date(project.getCreatedAt().getTime()));
-            statement.setDate(4, new Date(project.getUpdatedAt().getTime()));
+            statement.setDate(3, new java.sql.Date(project.getCreatedAt().getTime()));
+            statement.setDate(4, new java.sql.Date(project.getUpdatedAt().getTime()));
         } catch (Exception e) {
             throw new RuntimeException("Erro ao salvar projeto", e);
         } finally {
@@ -52,8 +51,8 @@ public class ProjectController {
             statement = conn.prepareStatement(sql);
             statement.setString(1, project.getName());
             statement.setString(2, project.getDescription());
-            statement.setDate(3, new Date(project.getCreatedAt().getTime()));
-            statement.setDate(4, new Date(project.getUpdatedAt().getTime()));
+            statement.setDate(3, new java.sql.Date(project.getCreatedAt().getTime()));
+            statement.setDate(4, new java.sql.Date(project.getUpdatedAt().getTime()));
             statement.setInt(5, project.getId());
         } catch (Exception e) {
             throw new RuntimeException("Erro ao atualizar projeto", e);
@@ -111,7 +110,7 @@ public class ProjectController {
             ConnectionFactory.closeConnection(conn, statement, rs);
         }
         
-        return null;
+        return projects;
     }
     
 }

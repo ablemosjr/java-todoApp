@@ -16,7 +16,7 @@ public class ConnectionFactory {
     public static Connection getConnection() {
         try {
             Class.forName(DRIVER);
-            return (Connection) DriverManager.getConnection(URL, USER, PASS);
+            return DriverManager.getConnection(URL, USER, PASS);
         } catch (Exception e) {
             throw new RuntimeException("Erro na conexão com o bando de dados", e);
         }
