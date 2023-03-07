@@ -27,7 +27,7 @@ public class ProjectDialog_Screen extends javax.swing.JDialog {
         lbl_ProjectName = new javax.swing.JLabel();
         lbl_ProjectDescription = new javax.swing.JLabel();
         input_ProjectName = new javax.swing.JTextField();
-        jScrollPane = new javax.swing.JScrollPane();
+        jsp_TextArea_Description = new javax.swing.JScrollPane();
         input_ProjectDescription = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -95,7 +95,7 @@ public class ProjectDialog_Screen extends javax.swing.JDialog {
         input_ProjectDescription.setForeground(new java.awt.Color(51, 51, 51));
         input_ProjectDescription.setRows(5);
         input_ProjectDescription.setSelectionColor(new java.awt.Color(0, 153, 102));
-        jScrollPane.setViewportView(input_ProjectDescription);
+        jsp_TextArea_Description.setViewportView(input_ProjectDescription);
 
         javax.swing.GroupLayout Panel_InfoLayout = new javax.swing.GroupLayout(Panel_Info);
         Panel_Info.setLayout(Panel_InfoLayout);
@@ -104,7 +104,7 @@ public class ProjectDialog_Screen extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel_InfoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Panel_InfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane)
+                    .addComponent(jsp_TextArea_Description)
                     .addComponent(lbl_ProjectName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbl_ProjectDescription, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(input_ProjectName))
@@ -120,7 +120,7 @@ public class ProjectDialog_Screen extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_ProjectDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .addComponent(jsp_TextArea_Description, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
         );
 
@@ -147,18 +147,23 @@ public class ProjectDialog_Screen extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void input_ProjectNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_ProjectNameActionPerformed
-        // TODO
+
     }//GEN-LAST:event_input_ProjectNameActionPerformed
 
     private void btnConfirm_ProjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirm_ProjectMouseClicked
         // TODO
-        Project project = new Project();    
-        project.setName(input_ProjectName.getText());
-        project.setDescription(input_ProjectDescription.getText());
+        try {
+            Project project = new Project();    
+            project.setName(input_ProjectName.getText());
+            project.setDescription(input_ProjectDescription.getText());
+
+            controller.save(project);
+
+            JOptionPane.showMessageDialog(Panel_Info, "Projeto salvo com sucesso");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(Panel_Info, e.getMessage());
+        }
         
-        controller.save(project);
-        
-        JOptionPane.showMessageDialog(Panel_Project, "Projeto salvo com sucesso");
         this.dispose();
     }//GEN-LAST:event_btnConfirm_ProjectMouseClicked
 
@@ -166,7 +171,7 @@ public class ProjectDialog_Screen extends javax.swing.JDialog {
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Java swing".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -202,7 +207,7 @@ public class ProjectDialog_Screen extends javax.swing.JDialog {
     private javax.swing.JLabel btnConfirm_Project;
     private javax.swing.JTextArea input_ProjectDescription;
     private javax.swing.JTextField input_ProjectName;
-    private javax.swing.JScrollPane jScrollPane;
+    private javax.swing.JScrollPane jsp_TextArea_Description;
     private javax.swing.JLabel lbl_ProjectDescription;
     private javax.swing.JLabel lbl_ProjectName;
     // End of variables declaration//GEN-END:variables

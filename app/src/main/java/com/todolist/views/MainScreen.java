@@ -147,6 +147,11 @@ public class MainScreen extends javax.swing.JFrame {
         Tasks_Title.setText("Tarefas");
 
         btnAdd_Tasks.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
+        btnAdd_Tasks.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAdd_TasksMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout Panel_TasksLayout = new javax.swing.GroupLayout(Panel_Tasks);
         Panel_Tasks.setLayout(Panel_TasksLayout);
@@ -291,6 +296,13 @@ public class MainScreen extends javax.swing.JFrame {
         ProjectDialog_Screen projectDialog_Screen = new ProjectDialog_Screen(this, rootPaneCheckingEnabled);
         projectDialog_Screen.setVisible(true);
     }//GEN-LAST:event_btnAdd_ProjectsMouseClicked
+
+    private void btnAdd_TasksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdd_TasksMouseClicked
+        // TODO
+        TaskDialog_Screen taskDialog_Screen = new TaskDialog_Screen(this, rootPaneCheckingEnabled);
+        //taskDialog_Screen.setProject(null); 
+        taskDialog_Screen.setVisible(true);
+    }//GEN-LAST:event_btnAdd_TasksMouseClicked
 
     public static void main(String args[]) {
 
