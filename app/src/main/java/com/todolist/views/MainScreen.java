@@ -5,6 +5,7 @@ import com.todolist.controller.ProjectController;
 import com.todolist.controller.TaskController;
 import com.todolist.model.Project;
 import com.todolist.model.Task;
+import com.todolist.util.DeadlineColumnCellRenderer;
 import com.todolist.util.TaskTableModel;
 
 import java.awt.Color;
@@ -24,10 +25,11 @@ public class MainScreen extends javax.swing.JFrame {
     
     public MainScreen() {
         initComponents();
-        decorateTableTask();
-        
+                
         initDataController();
         initComponentsModel();
+        
+        decorateTableTask();
     }
 
     @SuppressWarnings("unchecked")
@@ -422,6 +424,8 @@ public class MainScreen extends javax.swing.JFrame {
         Table_Tasks.getTableHeader().setBackground(new Color(0, 153, 102));
         Table_Tasks.getTableHeader().setForeground(new Color(255, 255, 255));
         Table_Tasks.setAutoCreateRowSorter(true);
+        
+        Table_Tasks.getColumnModel().getColumn(2).setCellRenderer(new DeadlineColumnCellRenderer());
     }
     
     public void initDataController() {
