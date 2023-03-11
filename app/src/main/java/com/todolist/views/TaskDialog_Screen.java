@@ -194,7 +194,7 @@ public class TaskDialog_Screen extends javax.swing.JDialog {
         try {
             Task task = new Task();   
             
-            task.setIdProject(2);
+            task.setIdProject(project.getId());
             
             task.setName(input_TaskName.getText());
             task.setDescription(input_TaskDescription.getText());
