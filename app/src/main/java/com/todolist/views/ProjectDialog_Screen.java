@@ -153,18 +153,21 @@ public class ProjectDialog_Screen extends javax.swing.JDialog {
     private void btnConfirm_ProjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfirm_ProjectMouseClicked
         // TODO
         try {
-            Project project = new Project();    
-            project.setName(input_ProjectName.getText());
-            project.setDescription(input_ProjectDescription.getText());
+            if (!input_ProjectName.getText().equals("")) {
+                Project project = new Project();    
+                project.setName(input_ProjectName.getText());
+                project.setDescription(input_ProjectDescription.getText());
 
-            controller.save(project);
+                controller.save(project);
 
-            JOptionPane.showMessageDialog(Panel_Info, "Projeto salvo com sucesso");
+                JOptionPane.showMessageDialog(Panel_Info, "Projeto salvo com sucesso");                   
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(Panel_Info, "Campo nome não foi preenchido");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(Panel_Info, e.getMessage());
         }
-        
-        this.dispose();
     }//GEN-LAST:event_btnConfirm_ProjectMouseClicked
 
     public static void main(String args[]) {

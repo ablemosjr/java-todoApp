@@ -192,27 +192,30 @@ public class TaskDialog_Screen extends javax.swing.JDialog {
     private void btnConfirm_TaskMouseClicked(java.awt.event.MouseEvent evt) {                                             
         // TODO
         try {
-            Task task = new Task();   
-            
-            task.setIdProject(project.getId());
-            
-            task.setName(input_TaskName.getText());
-            task.setDescription(input_TaskDescription.getText());
-            task.setIsCompleted(false);
-            task.setNotes(input_TaskNotes.getText());
-            
-            SimpleDateFormat df = new SimpleDateFormat("dd/MM/y");
-            Date deadline = df.parse(input_TaskDeadline.getText());
-            task.setDeadline(deadline);
+            if (!input_TaskName.getText().isEmpty() && !input_TaskDeadline.getText().isEmpty()) {
+                Task task = new Task();   
 
-            controller.save(task);
+                task.setIdProject(project.getId());
 
-            JOptionPane.showMessageDialog(Panel_Info, "Tarefa salva com sucesso");
+                task.setName(input_TaskName.getText());
+                task.setDescription(input_TaskDescription.getText());
+                task.setIsCompleted(false);
+                task.setNotes(input_TaskNotes.getText());
+
+                SimpleDateFormat df = new SimpleDateFormat("dd/MM/y");
+                Date deadline = df.parse(input_TaskDeadline.getText());
+                task.setDeadline(deadline);
+
+                controller.save(task);
+
+                JOptionPane.showMessageDialog(Panel_Info, "Tarefa salva com sucesso");
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(Panel_Info, "Os campos de nome e prazo são obrigatórios");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(Panel_Info, e.getMessage());
         }
-        
-        this.dispose();
     }                                            
 
     public static void main(String args[]) {
