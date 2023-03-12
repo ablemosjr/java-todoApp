@@ -5,6 +5,7 @@ import com.todolist.controller.ProjectController;
 import com.todolist.controller.TaskController;
 import com.todolist.model.Project;
 import com.todolist.model.Task;
+import com.todolist.util.ButtonColumnCellRenderer;
 import com.todolist.util.DeadlineColumnCellRenderer;
 import com.todolist.util.TaskTableModel;
 
@@ -359,8 +360,6 @@ public class MainScreen extends javax.swing.JFrame {
                 Project project = (Project) projectsModel.get(projectIndex);
                 loadTasks(project.getId());
                 break;
-            default:
-                throw new AssertionError();
         }
     }//GEN-LAST:event_Table_TasksMouseClicked
 
@@ -426,6 +425,8 @@ public class MainScreen extends javax.swing.JFrame {
         Table_Tasks.setAutoCreateRowSorter(true);
         
         Table_Tasks.getColumnModel().getColumn(2).setCellRenderer(new DeadlineColumnCellRenderer());
+        Table_Tasks.getColumnModel().getColumn(4).setCellRenderer(new ButtonColumnCellRenderer("edit"));
+        Table_Tasks.getColumnModel().getColumn(5).setCellRenderer(new ButtonColumnCellRenderer("delete"));
     }
     
     public void initDataController() {

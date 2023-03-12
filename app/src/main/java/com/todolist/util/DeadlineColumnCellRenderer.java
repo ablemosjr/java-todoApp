@@ -19,7 +19,7 @@ public class DeadlineColumnCellRenderer extends DefaultTableCellRenderer {
         label.setHorizontalAlignment(CENTER);
         
         TaskTableModel taskModel = (TaskTableModel) table.getModel();
-        Task task = taskModel.getTasks().get(NEXT);
+        Task task = taskModel.getTasks().get(row);
         
         if (task.getDeadline().after(new Date())) {
             label.setBackground(Color.GREEN);
